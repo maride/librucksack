@@ -11,6 +11,7 @@ __attribute__((constructor))
 void _librucksack_init() {
 	// Use a constructor so this function will be executed before main()
 
+	_stat_get_original_links();
 	_unistd_get_original_links();
 
 	char* env_enable_list = getenv("LIBRUCKSACK_ENABLE_FILELIST");

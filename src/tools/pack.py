@@ -3,6 +3,7 @@
 import sys
 import argparse
 
+MAXPATHLEN = 256
 
 # Packs the content for the given path
 def packContent(path, cont):
@@ -11,7 +12,7 @@ def packContent(path, cont):
     if isinstance(cont, str):
         cont = cont.encode()
 
-    prepared_path = path + (256 - len(path))*b'\0'
+    prepared_path = path[:MAXPATHLEN] + (MAXPATHLEN - len(path))*b'\0'
     prepared_content = len(cont).to_bytes(8, 'little') + cont
     return prepared_path + prepared_content
 

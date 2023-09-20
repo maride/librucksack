@@ -5,6 +5,7 @@ CFLAGS:=$(CFLAGS) -Wall -DLINUX -shared -fPIC
 all: pack dist
 
 pack:
+	test -f "pack" || echo "ERROR: 'pack' file doesn't exist at $(shell pwd) - stopping." && false
 	$(LD) --relocatable --format=binary -o pack.o pack
 
 dist: pack

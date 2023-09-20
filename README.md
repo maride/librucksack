@@ -7,7 +7,7 @@ librucksack carries the files for another executable in memory.
 If you want to have self-contained executables, you can [statically link](https://en.wikipedia.org/wiki/Static_build) them at compile time.
 This will copy all the required libraries directly into your executable. This way, if you're on a different system, you don't need to install all required shared libraries.
 
-However, this doesn't take files into consideration which might be relevant for the executable.
+However, this doesn't take files into consideration which might be opened by the executable at runtime.
 
 Let's take [nmap](https://nmap.org) as an example: while you can statically link it so you can copy it onto other hosts for scanning purposes, most of nmap's powers lie in the scripting engine and its scripts. Those are installed into `/usr/share/nmap` when you `apt-get install nmap`; but in most cases, you need adminstrator rights for this installation command.
 
@@ -21,7 +21,7 @@ librucksack addresses this by hooking to [libc](https://gnu.org/software/libc/) 
 
 ## Usage
 
-To get your rucksack ready for the journey, you need to pack it first. **Packing** means collecting all files which should be delivered from librucksack and having them in a well-consumable format.
+To get your rucksack ready for the journey, you need to pack it first. **Packing** means collecting all files which should be delivered from librucksack and having them in a rucksack-consumable format.
 
 The steps are:
 
@@ -43,4 +43,4 @@ The command `strace --env=LD_PRELOAD=./src/lib/librucksack.so --trace=openat cat
 
 Yes please! There is still alot of functionality missing.
 
-As a start, why don't you have a look for *TODO!* markers inside the source code?
+As a start, why don't you have a look for *TODO* markers inside the source code?

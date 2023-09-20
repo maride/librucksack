@@ -3,6 +3,7 @@
 #include "../common/pack_util.h"
 #include "patch_unistd.h"
 #include "patch_stat.h"
+#include "patch_stdio.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -12,6 +13,7 @@ void _librucksack_init() {
 	// Use a constructor so this function will be executed before main()
 
 	_stat_get_original_links();
+	_stdio_get_original_links();
 	_unistd_get_original_links();
 
 	char* env_enable_list = getenv("LIBRUCKSACK_ENABLE_FILELIST");
